@@ -76,7 +76,7 @@ function guessLetter(elm) {
   // TODO: Determine if the letter is in the secret word,
   // if so, reveal it in the secretWordDiv, otherwise
   // add a part to our hangman
-  for (i = 0; i < secretWord.length, i++)
+  for (i = 0; i < secretWord.length; i++)
   {
     var v = secretWord.charAt(i);
     if (v == letter) 
