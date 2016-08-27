@@ -17,7 +17,7 @@ function init() {
   drawBlanks();
 };
 init();
-
+//console.log(secretWord);
 /**
  * Clear the guesses div of all prior guesses
  */
@@ -38,23 +38,6 @@ function resetLetters() {
   lettersDiv.innerHTML = letters.join('');
 }
 
-/**
- * Guesses a single letter, removes it from possible guesses,
- * checks to see if it is in the secret word, and if it is
- * adds it to the secret word, if not, draws another hangman part
- * @param {elm} the element clicked
- */
-function guessLetter(elm) {
-  var letter = elm.id;
-
-  // Remove the letter from possible guesses element
-  var node = document.getElementById(letter);
-  node.parentElement.removeChild(node);
-
-  // Add the letter to the guesses div
-  node = document.createElement('span');
-  node.innerHTML = letter;
-  guessesDiv.appendChild(node);
 
   /**
  * Guesses a single letter, removes it from possible guesses,
@@ -77,20 +60,6 @@ function guessLetter(elm) {
   // TODO: Determine if the letter is in the secret word,
   // if so, reveal it in the secretWordDiv, otherwise
   // add a part to our hangman
-  //
-  // Attempt at Midnight by myself with limited JS knowledge =P
-  /*for (i = 0; i < secretWord.length; i++)
-  {
-    var v = secretWord.charAt(i);
-    if (v == letter)
-    {
-      blanks = blanks.substring(0,i) + "letter" + blanks.substring(i+1);
-    }
-    else
-    {
-        drawStickMan(guessesDiv.length);
-    }
-  }*/
   if(secretWord.indexOf(letter.toLowerCase()) != -1)
   {
     //update blanks
@@ -116,7 +85,7 @@ function guessLetter(elm) {
   // TODO: Determine if the game is over, and if so,
   // let the player know if they have won or lost
   if (wrongGuessesCount == 6) { alert("Game Over -- You lose."); init(); }
-  if (secretWord.indexOf("_") == -1) { alert("Game Over -- You win."); init(); }
+  if (blanks.indexOf("_") == -1) { alert("Game Over -- You win."); init(); }
 }
 
 /**
